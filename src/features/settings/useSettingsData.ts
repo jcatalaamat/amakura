@@ -1,12 +1,8 @@
 import { useLogout } from '~/features/auth/useLogout'
 import { useNotificationStatus } from '~/features/notification/useNotificationsStatus'
-import { dialogConfirm } from '~/interface/dialogs/actions'
 import { BellIcon } from '~/interface/icons/phosphor/BellIcon'
-import { BookmarkIcon } from '~/interface/icons/phosphor/BookmarkIcon'
-import { ChatCircleIcon } from '~/interface/icons/phosphor/ChatCircleIcon'
 import { DoorIcon } from '~/interface/icons/phosphor/DoorIcon'
 import { FileIcon } from '~/interface/icons/phosphor/FileIcon'
-import { InfoIcon } from '~/interface/icons/phosphor/InfoIcon'
 import { LockIcon } from '~/interface/icons/phosphor/LockIcon'
 import { UserIcon } from '~/interface/icons/phosphor/UserIcon'
 import { useToggleTheme } from '~/interface/theme/ThemeSwitch'
@@ -43,26 +39,19 @@ export function useSettingsData() {
     useNotificationStatus()
   const themeLabel = themeSetting[0]?.toUpperCase() + themeSetting.slice(1)
 
-  const handleDeleteAccount = async () => {
-    await dialogConfirm({
-      title: 'Delete Account',
-      description: 'Account deletion is not currently available.',
-    })
-  }
-
   const sections: SettingSection[] = [
     {
-      title: 'Account',
+      title: 'Cuenta',
       items: [
         {
           id: 'theme',
-          title: `Theme: ${themeLabel}`,
+          title: `Tema: ${themeLabel}`,
           icon: ThemeIcon,
           onPress: toggleTheme,
         },
         {
           id: 'notifications',
-          title: 'Push Notifications',
+          title: 'Notificaciones',
           icon: BellIcon,
           toggle: {
             value: notificationsEnabled,
@@ -71,63 +60,37 @@ export function useSettingsData() {
         },
         {
           id: 'profile',
-          title: 'Edit Profile',
+          title: 'Editar Perfil',
           icon: UserIcon,
           href: '/home/settings/edit-profile',
-        },
-        {
-          id: 'blocked-users',
-          title: 'Blocked Users',
-          icon: LockIcon,
-          href: '/home/settings/blocked-users',
         },
       ],
     },
     {
-      title: 'Support',
+      title: 'Legal',
       items: [
         {
-          id: 'help',
-          title: 'Help & Support',
-          icon: ChatCircleIcon,
-          href: '/help',
-          external: true,
-        },
-        {
-          id: 'documentation',
-          title: 'Documentation',
-          icon: BookmarkIcon,
-          href: '/docs/introduction',
-          external: true,
-        },
-        {
           id: 'terms',
-          title: 'Terms of Service',
+          title: 'Términos de Servicio',
           icon: FileIcon,
           href: '/terms-of-service',
           external: true,
         },
         {
           id: 'privacy',
-          title: 'Privacy Policy',
+          title: 'Política de Privacidad',
           icon: LockIcon,
           href: '/privacy-policy',
           external: true,
         },
-        {
-          id: 'delete',
-          title: 'Delete Account',
-          icon: InfoIcon,
-          onPress: handleDeleteAccount,
-        },
       ],
     },
     {
-      title: 'Other',
+      title: 'Sesión',
       items: [
         {
           id: 'logout',
-          title: 'Log Out',
+          title: 'Cerrar Sesión',
           icon: DoorIcon,
           onPress: logout,
         },

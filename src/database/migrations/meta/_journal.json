@@ -8,6 +8,13 @@
       "when": 1770171638360,
       "tag": "0001_initial_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1770875234845,
+      "tag": "0001_little_kat_farrell",
+      "breakpoints": true
     }
   ]
 }

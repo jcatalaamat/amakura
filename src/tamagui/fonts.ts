@@ -1,23 +1,115 @@
-import { createSystemFont, fonts as baseFonts } from '@tamagui/config/v5'
-import { isWeb } from 'tamagui'
+import { fonts as baseFonts } from '@tamagui/config/v5'
+import { createFont, isWeb } from 'tamagui'
 
-const mono = createSystemFont({
-  sizeLineHeight: (size) => (size >= 16 ? size * 1.2 + 8 : size * 1.15 + 5),
-  font: {
-    family: isWeb ? '"JetBrains Mono", monospace' : 'JetBrains Mono',
-    weight: {
-      0: '400',
-    },
+const heading = createFont({
+  family: isWeb ? '"Playfair Display", serif' : 'Playfair Display',
+  size: {
+    1: 12,
+    2: 14,
+    3: 16,
+    4: 18,
+    5: 20,
+    6: 24,
+    7: 28,
+    8: 32,
+    9: 40,
+    10: 48,
+    11: 56,
+    12: 72,
+    13: 88,
+    true: 20,
+  },
+  lineHeight: {
+    1: 18,
+    2: 20,
+    3: 22,
+    4: 24,
+    5: 26,
+    6: 30,
+    7: 34,
+    8: 38,
+    9: 46,
+    10: 54,
+    11: 62,
+    12: 78,
+    13: 94,
+    true: 26,
+  },
+  weight: { 4: '400', 5: '500', 6: '600', 7: '700', 8: '800', true: '400' },
+  letterSpacing: {
+    4: -0.5,
+    5: -0.5,
+    6: -0.5,
+    7: -1,
+    8: -1,
+    9: -1.5,
+    10: -2,
+    11: -2,
+    12: -3,
+    13: -3,
+    true: -0.5,
   },
 })
 
-export const fonts = {
-  ...baseFonts,
-  body: {
-    ...baseFonts.body,
-    weight: {
-      4: '400',
-    },
+const body = createFont({
+  family: isWeb ? '"DM Sans", sans-serif' : 'DM Sans',
+  size: { ...baseFonts.body.size, true: 15 },
+  lineHeight: { ...baseFonts.body.lineHeight, true: 24 },
+  weight: { 3: '300', 4: '400', 5: '500', 6: '600', 7: '700', true: '400' },
+  letterSpacing: { ...baseFonts.body.letterSpacing, true: 0 },
+})
+
+const mono = createFont({
+  family: isWeb ? '"JetBrains Mono", monospace' : 'JetBrains Mono',
+  size: {
+    1: 11,
+    2: 12,
+    3: 13,
+    4: 14,
+    5: 16,
+    6: 18,
+    7: 20,
+    8: 22,
+    9: 26,
+    10: 30,
+    11: 36,
+    12: 42,
+    13: 52,
+    true: 14,
   },
-  mono,
-}
+  lineHeight: {
+    1: 17,
+    2: 18,
+    3: 20,
+    4: 22,
+    5: 24,
+    6: 28,
+    7: 32,
+    8: 34,
+    9: 40,
+    10: 46,
+    11: 54,
+    12: 62,
+    13: 76,
+    true: 22,
+  },
+  weight: { 4: '400', true: '400' },
+  letterSpacing: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
+    10: 0,
+    11: 0,
+    12: 0,
+    13: 0,
+    true: 0,
+  },
+})
+
+export const fonts = { ...baseFonts, heading, body, mono }

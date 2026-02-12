@@ -14,27 +14,22 @@ declare module 'one' {
         | `/(app)/auth/signup/otp`
         | `/(app)/home`
         | `/(app)/home/(tabs)`
-        | `/(app)/home/(tabs)/ai`
-        | `/(app)/home/(tabs)/ai/`
-        | `/(app)/home/(tabs)/feed`
-        | `/(app)/home/(tabs)/feed/`
-        | `/(app)/home/(tabs)/profile`
-        | `/(app)/home/(tabs)/profile/`
-        | `/(app)/home/(tabs)/search`
-        | `/(app)/home/(tabs)/search/`
-        | `/(app)/home/ai`
-        | `/(app)/home/ai/`
-        | `/(app)/home/feed`
-        | `/(app)/home/feed/`
+        | `/(app)/home/(tabs)/bookings`
+        | `/(app)/home/(tabs)/bookings/`
+        | `/(app)/home/(tabs)/messages`
+        | `/(app)/home/(tabs)/messages/`
+        | `/(app)/home/(tabs)/portfolio`
+        | `/(app)/home/(tabs)/portfolio/`
+        | `/(app)/home/bookings`
+        | `/(app)/home/bookings/`
+        | `/(app)/home/messages`
+        | `/(app)/home/messages/`
         | `/(app)/home/notification`
         | `/(app)/home/notification/`
-        | `/(app)/home/profile`
-        | `/(app)/home/profile/`
-        | `/(app)/home/search`
-        | `/(app)/home/search/`
+        | `/(app)/home/portfolio`
+        | `/(app)/home/portfolio/`
         | `/(app)/home/settings`
         | `/(app)/home/settings/`
-        | `/(app)/home/settings/blocked-users`
         | `/(app)/home/settings/edit-profile`
         | `/(legal)/eula`
         | `/(legal)/privacy-policy`
@@ -48,79 +43,38 @@ declare module 'one' {
         | `/help`
         | `/home`
         | `/home/(tabs)`
-        | `/home/(tabs)/ai`
-        | `/home/(tabs)/ai/`
-        | `/home/(tabs)/feed`
-        | `/home/(tabs)/feed/`
-        | `/home/(tabs)/profile`
-        | `/home/(tabs)/profile/`
-        | `/home/(tabs)/search`
-        | `/home/(tabs)/search/`
-        | `/home/ai`
-        | `/home/ai/`
-        | `/home/feed`
-        | `/home/feed/`
+        | `/home/(tabs)/bookings`
+        | `/home/(tabs)/bookings/`
+        | `/home/(tabs)/messages`
+        | `/home/(tabs)/messages/`
+        | `/home/(tabs)/portfolio`
+        | `/home/(tabs)/portfolio/`
+        | `/home/bookings`
+        | `/home/bookings/`
+        | `/home/messages`
+        | `/home/messages/`
         | `/home/notification`
         | `/home/notification/`
-        | `/home/profile`
-        | `/home/profile/`
-        | `/home/search`
-        | `/home/search/`
+        | `/home/portfolio`
+        | `/home/portfolio/`
         | `/home/settings`
         | `/home/settings/`
-        | `/home/settings/blocked-users`
         | `/home/settings/edit-profile`
         | `/privacy-policy`
         | `/terms-of-service`
       DynamicRoutes: 
         | `/(app)/auth/signup/${OneRouter.SingleRoutePart<T>}`
-        | `/(app)/home/(tabs)/feed/post/${OneRouter.SingleRoutePart<T>}`
-        | `/(app)/home/(tabs)/feed/profile/${OneRouter.SingleRoutePart<T>}`
-        | `/(app)/home/(tabs)/profile/post/${OneRouter.SingleRoutePart<T>}`
-        | `/(app)/home/feed/post/${OneRouter.SingleRoutePart<T>}`
-        | `/(app)/home/feed/profile/${OneRouter.SingleRoutePart<T>}`
-        | `/(app)/home/profile/post/${OneRouter.SingleRoutePart<T>}`
         | `/auth/signup/${OneRouter.SingleRoutePart<T>}`
         | `/docs/${OneRouter.SingleRoutePart<T>}`
-        | `/home/(tabs)/feed/post/${OneRouter.SingleRoutePart<T>}`
-        | `/home/(tabs)/feed/profile/${OneRouter.SingleRoutePart<T>}`
-        | `/home/(tabs)/profile/post/${OneRouter.SingleRoutePart<T>}`
-        | `/home/feed/post/${OneRouter.SingleRoutePart<T>}`
-        | `/home/feed/profile/${OneRouter.SingleRoutePart<T>}`
-        | `/home/profile/post/${OneRouter.SingleRoutePart<T>}`
       DynamicRouteTemplate: 
         | `/(app)/auth/signup/[method]`
-        | `/(app)/home/(tabs)/feed/post/[feedId]`
-        | `/(app)/home/(tabs)/feed/profile/[userId]`
-        | `/(app)/home/(tabs)/profile/post/[feedId]`
-        | `/(app)/home/feed/post/[feedId]`
-        | `/(app)/home/feed/profile/[userId]`
-        | `/(app)/home/profile/post/[feedId]`
         | `/auth/signup/[method]`
         | `/docs/[slug]`
-        | `/home/(tabs)/feed/post/[feedId]`
-        | `/home/(tabs)/feed/profile/[userId]`
-        | `/home/(tabs)/profile/post/[feedId]`
-        | `/home/feed/post/[feedId]`
-        | `/home/feed/profile/[userId]`
-        | `/home/profile/post/[feedId]`
       IsTyped: true
       RouteTypes: {
         '/(app)/auth/signup/[method]': RouteInfo<{ method: string }>
-        '/(app)/home/(tabs)/feed/post/[feedId]': RouteInfo<{ feedId: string }>
-        '/(app)/home/(tabs)/feed/profile/[userId]': RouteInfo<{ userId: string }>
-        '/(app)/home/(tabs)/profile/post/[feedId]': RouteInfo<{ feedId: string }>
-        '/(app)/home/feed/post/[feedId]': RouteInfo<{ feedId: string }>
-        '/(app)/home/feed/profile/[userId]': RouteInfo<{ userId: string }>
-        '/(app)/home/profile/post/[feedId]': RouteInfo<{ feedId: string }>
         '/auth/signup/[method]': RouteInfo<{ method: string }>
         '/docs/[slug]': RouteInfo<{ slug: string }>
-        '/home/(tabs)/feed/post/[feedId]': RouteInfo<{ feedId: string }>
-        '/home/(tabs)/feed/profile/[userId]': RouteInfo<{ userId: string }>
-        '/home/(tabs)/profile/post/[feedId]': RouteInfo<{ feedId: string }>
-        '/home/feed/post/[feedId]': RouteInfo<{ feedId: string }>
-        '/home/feed/profile/[userId]': RouteInfo<{ userId: string }>
-        '/home/profile/post/[feedId]': RouteInfo<{ feedId: string }>
       }
     }
   }

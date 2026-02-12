@@ -5,8 +5,10 @@
  * this file re-exports all query modules - while this breaks tree-shaking,
  * queries are typically small and few in number even in larger apps.
  */
-export * as block from '../queries/block'
-export * as comment from '../queries/comment'
+export * as booking from '../queries/booking'
+export * as contactMessage from '../queries/contactMessage'
+export * as experienceType from '../queries/experienceType'
 export * as notification from '../queries/notification'
-export * as post from '../queries/post'
+export * as portfolio from '../queries/portfolio'
 export * as user from '../queries/user'
+export * as volunteer from '../queries/volunteer'

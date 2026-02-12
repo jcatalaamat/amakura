@@ -5,23 +5,52 @@ import * as v from 'valibot'
 
 import * as Queries from './groupedQueries'
 
-const block = {
-  blockedByUser: defineQuery(
+const booking = {
+  allBookings: defineQuery(
     v.object({
-      userId: v.string(),
-      limit: v.optional(v.number()),
+      status: v.optional(v.string()),
+      pageSize: v.number(),
     }),
-    ({ args }) => Queries.block.blockedByUser(args)
+    ({ args }) => Queries.booking.allBookings(args)
+  ),
+  bookingById: defineQuery(
+    v.object({
+      id: v.string(),
+    }),
+    ({ args }) => Queries.booking.bookingById(args)
+  ),
+  bookingsByDate: defineQuery(
+    v.object({
+      date: v.string(),
+    }),
+    ({ args }) => Queries.booking.bookingsByDate(args)
   ),
 }
 
-const comment = {
-  commentsByPostId: defineQuery(
+const contactMessage = {
+  allMessages: defineQuery(
     v.object({
-      postId: v.string(),
-      limit: v.optional(v.number()),
+      status: v.optional(v.string()),
+      pageSize: v.number(),
     }),
-    ({ args }) => Queries.comment.commentsByPostId(args)
+    ({ args }) => Queries.contactMessage.allMessages(args)
+  ),
+  unreadMessages: defineQuery(() => Queries.contactMessage.unreadMessages()),
+}
+
+const experienceType = {
+  allExperienceTypes: defineQuery(() => Queries.experienceType.allExperienceTypes()),
+  experienceTypeById: defineQuery(
+    v.object({
+      id: v.string(),
+    }),
+    ({ args }) => Queries.experienceType.experienceTypeById(args)
+  ),
+  experienceTypesByCategory: defineQuery(
+    v.object({
+      category: v.string(),
+    }),
+    ({ args }) => Queries.experienceType.experienceTypesByCategory(args)
   ),
 }
 
@@ -54,72 +83,19 @@ const notification = {
   ),
 }
 
-const post = {
-  feedPosts: defineQuery(
+const portfolio = {
+  allProjects: defineQuery(() => Queries.portfolio.allProjects()),
+  projectById: defineQuery(
     v.object({
-      pageSize: v.number(),
-      cursor: v.optional(
-        v.union([
-          v.object({
-            id: v.string(),
-            createdAt: v.number(),
-          }),
-          v.null(),
-        ])
-      ),
+      id: v.string(),
     }),
-    ({ args }) => Queries.post.feedPosts(args)
+    ({ args }) => Queries.portfolio.projectById(args)
   ),
-  postById: defineQuery(
+  projectsByCategory: defineQuery(
     v.object({
-      postId: v.string(),
+      category: v.string(),
     }),
-    ({ args }) => Queries.post.postById(args)
-  ),
-  postDetail: defineQuery(
-    v.object({
-      postId: v.string(),
-    }),
-    ({ args }) => Queries.post.postDetail(args)
-  ),
-  postsByUserId: defineQuery(
-    v.object({
-      userId: v.string(),
-      limit: v.optional(v.number()),
-    }),
-    ({ args }) => Queries.post.postsByUserId(args)
-  ),
-  postsPaginated: defineQuery(
-    v.object({
-      userId: v.optional(v.string()),
-      pageSize: v.number(),
-      cursor: v.optional(
-        v.union([
-          v.object({
-            id: v.string(),
-            createdAt: v.number(),
-          }),
-          v.null(),
-        ])
-      ),
-    }),
-    ({ args }) => Queries.post.postsPaginated(args)
-  ),
-  searchPosts: defineQuery(
-    v.object({
-      searchText: v.string(),
-      pageSize: v.number(),
-      cursor: v.optional(
-        v.union([
-          v.object({
-            id: v.string(),
-            createdAt: v.number(),
-          }),
-          v.null(),
-        ])
-      ),
-    }),
-    ({ args }) => Queries.post.searchPosts(args)
+    ({ args }) => Queries.portfolio.projectsByCategory(args)
   ),
 }
 
@@ -144,10 +120,23 @@ const user = {
   ),
 }
 
+const volunteer = {
+  allApplications: defineQuery(
+    v.object({
+      status: v.optional(v.string()),
+      pageSize: v.number(),
+    }),
+    ({ args }) => Queries.volunteer.allApplications(args)
+  ),
+  pendingApplications: defineQuery(() => Queries.volunteer.pendingApplications()),
+}
+
 export const queries = defineQueries({
-  block,
-  comment,
+  booking,
+  contactMessage,
+  experienceType,
   notification,
-  post,
+  portfolio,
   user,
+  volunteer,
 })

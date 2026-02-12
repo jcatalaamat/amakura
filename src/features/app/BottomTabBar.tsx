@@ -2,9 +2,10 @@ import { usePathname, type Href } from 'one'
 import { View, XStack } from 'tamagui'
 
 import { Link } from '~/interface/app/Link'
-import { HouseIcon } from '~/interface/icons/phosphor/HouseIcon'
-import { SparkleIcon } from '~/interface/icons/phosphor/SparkleIcon'
-import { UserCircleIcon } from '~/interface/icons/phosphor/UserCircleIcon'
+import { ArchiveIcon } from '~/interface/icons/phosphor/ArchiveIcon'
+import { EnvelopeIcon } from '~/interface/icons/phosphor/EnvelopeIcon'
+import { GearIcon } from '~/interface/icons/phosphor/GearIcon'
+import { ImageIcon } from '~/interface/icons/phosphor/ImageIcon'
 
 type TabRoute = {
   name: string
@@ -13,15 +14,17 @@ type TabRoute = {
 }
 
 const routes: TabRoute[] = [
-  { name: 'home', href: '/home/feed', icon: HouseIcon },
-  { name: 'ai', href: '/home/ai', icon: SparkleIcon },
-  { name: 'profile', href: '/home/profile', icon: UserCircleIcon },
+  { name: 'bookings', href: '/home/bookings', icon: ArchiveIcon },
+  { name: 'portfolio', href: '/home/portfolio', icon: ImageIcon },
+  { name: 'messages', href: '/home/messages', icon: EnvelopeIcon },
+  { name: 'settings', href: '/home/settings', icon: GearIcon },
 ]
 
 export function BottomTabBar() {
   const pathname = usePathname()
   const currentTab =
-    routes.find((r) => r.href && pathname.startsWith(r.href as string))?.name ?? 'home'
+    routes.find((r) => r.href && pathname.startsWith(r.href as string))?.name ??
+    'bookings'
 
   return (
     <View
