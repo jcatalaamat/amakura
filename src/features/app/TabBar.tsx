@@ -22,12 +22,10 @@ import {
   rigidImpact,
   softImpact,
 } from '~/interface/haptics/haptics'
+import { ArchiveIcon } from '~/interface/icons/phosphor/ArchiveIcon'
+import { EnvelopeIcon } from '~/interface/icons/phosphor/EnvelopeIcon'
 import { GearIcon } from '~/interface/icons/phosphor/GearIcon'
-import { HouseIcon } from '~/interface/icons/phosphor/HouseIcon'
-import { MagnifyingGlassIcon } from '~/interface/icons/phosphor/MagnifyingGlassIcon'
-import { PencilSimpleIcon } from '~/interface/icons/phosphor/PencilSimpleIcon'
-import { SparkleIcon } from '~/interface/icons/phosphor/SparkleIcon'
-import { UserIcon } from '~/interface/icons/phosphor/UserIcon'
+import { ImageIcon } from '~/interface/icons/phosphor/ImageIcon'
 
 import { Pressable } from '../../interface/buttons/Pressable'
 import { dialogEmit } from '../../interface/dialogs/shared'
@@ -48,16 +46,13 @@ export interface ExpandedMenuItemType {
 }
 
 const EXPANDED_MENU_ITEMS: ExpandedMenuItemType[] = [
-  { icon: PencilSimpleIcon, label: 'Create Post', route: 'create-post' },
-  { icon: MagnifyingGlassIcon, label: 'Search', route: 'search' },
-  { icon: GearIcon, label: 'Settings', route: 'settings' },
+  { icon: GearIcon, label: 'Configuración', route: 'settings' },
 ]
 
 const ALL_TABS = [
-  { name: 'feed', icon: HouseIcon, hideTabBar: false },
-  { name: 'ai', icon: SparkleIcon, hideTabBar: true },
-  { name: 'search', icon: MagnifyingGlassIcon, hideTabBar: false },
-  { name: 'profile', icon: UserIcon, hideTabBar: false },
+  { name: 'bookings', icon: ArchiveIcon, hideTabBar: false },
+  { name: 'portfolio', icon: ImageIcon, hideTabBar: false },
+  { name: 'messages', icon: EnvelopeIcon, hideTabBar: false },
 ]
 
 interface TabBarProps extends BottomTabBarProps {

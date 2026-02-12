@@ -62,6 +62,7 @@ declare module 'one' {
         | `/home/settings/edit-profile`
         | `/privacy-policy`
         | `/terms-of-service`
+        | `/voluntariado`
       DynamicRoutes: 
         | `/(app)/auth/signup/${OneRouter.SingleRoutePart<T>}`
         | `/auth/signup/${OneRouter.SingleRoutePart<T>}`
