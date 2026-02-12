@@ -1,8 +1,13 @@
 import { H1, Paragraph, styled, View, XStack, YStack } from 'tamagui'
 
-import { Link } from '~/interface/app/Link'
-
 import { Button } from '../buttons/Button'
+
+function scrollToSection(id: string) {
+  const element = document.getElementById(id)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 const HeroTitle = styled(H1, {
   fontFamily: '$heading',
@@ -74,21 +79,15 @@ export function HeroSection() {
         </HeroSubtitle>
 
         <XStack gap="$4" mt="$4" flexWrap="wrap" justify="center">
-          <Link href="#visitar">
-            <Button theme="accent" size="large">
-              Visitar
-            </Button>
-          </Link>
-          <Link href="#construir">
-            <Button size="large" variant="outlined">
-              Construir
-            </Button>
-          </Link>
-          <Link href="#aprender">
-            <Button size="large" variant="outlined">
-              Aprender
-            </Button>
-          </Link>
+          <Button theme="accent" size="large" onPress={() => scrollToSection('visitar')}>
+            Visitar
+          </Button>
+          <Button size="large" variant="outlined" onPress={() => scrollToSection('construir')}>
+            Construir
+          </Button>
+          <Button size="large" variant="outlined" onPress={() => scrollToSection('aprender')}>
+            Aprender
+          </Button>
         </XStack>
 
         <XStack gap="$6" mt="$8" opacity={0.7}>

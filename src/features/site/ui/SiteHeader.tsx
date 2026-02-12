@@ -18,6 +18,14 @@ const navLinks = [
   { href: '#contacto', label: 'Contacto' },
 ]
 
+function scrollToSection(href: string) {
+  const id = href.replace('#', '')
+  const element = document.getElementById(id)
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
 export const SiteHeader = memo(() => {
   return (
     <ScrollHeader>
@@ -49,15 +57,16 @@ export const SiteHeader = memo(() => {
 
             <XStack gap="$6" items="center" display="none" $md={{ display: 'flex' }}>
               {navLinks.map((link) => (
-                <Link key={link.href} href={link.href}>
-                  <Paragraph
-                    size="$3"
-                    color="$color10"
-                    hoverStyle={{ color: '$color12' }}
-                  >
-                    {link.label}
-                  </Paragraph>
-                </Link>
+                <Paragraph
+                  key={link.href}
+                  size="$3"
+                  color="$color10"
+                  hoverStyle={{ color: '$color12' }}
+                  cursor="pointer"
+                  onPress={() => scrollToSection(link.href)}
+                >
+                  {link.label}
+                </Paragraph>
               ))}
             </XStack>
 
@@ -65,9 +74,9 @@ export const SiteHeader = memo(() => {
 
             <XStack gap="$3" items="center" display="none" $md={{ display: 'flex' }}>
               <LoginButton />
-              <Link href="#visitar">
-                <Button theme="accent">Reservar</Button>
-              </Link>
+              <Button theme="accent" onPress={() => scrollToSection('#visitar')}>
+                Reservar
+              </Button>
               <ThemeSwitch />
             </XStack>
 
@@ -127,13 +136,14 @@ const SiteHeaderMenu = memo(() => {
                 {navLinks.map((link) => (
                   <ListItem
                     key={link.href}
-                    onPress={() => setOpen(false)}
+                    onPress={() => {
+                      setOpen(false)
+                      setTimeout(() => scrollToSection(link.href), 300)
+                    }}
                   >
-                    <Link href={link.href}>
-                      <Paragraph size="$5" color="$color12">
-                        {link.label}
-                      </Paragraph>
-                    </Link>
+                    <Paragraph size="$5" color="$color12">
+                      {link.label}
+                    </Paragraph>
                   </ListItem>
                 ))}
 
@@ -141,11 +151,15 @@ const SiteHeaderMenu = memo(() => {
 
                 <XStack gap="$3" justify="center">
                   <LoginButton />
-                  <Link href="#visitar">
-                    <Button theme="accent" onPress={() => setOpen(false)}>
-                      Reservar
-                    </Button>
-                  </Link>
+                  <Button
+                    theme="accent"
+                    onPress={() => {
+                      setOpen(false)
+                      setTimeout(() => scrollToSection('#visitar'), 300)
+                    }}
+                  >
+                    Reservar
+                  </Button>
                 </XStack>
 
                 <XStack justify="center" mt="$4">
