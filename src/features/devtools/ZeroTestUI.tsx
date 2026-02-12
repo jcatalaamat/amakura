@@ -1,14 +1,18 @@
 import { memo, useEffect, useState } from 'react'
+import { isWeb } from 'tamagui'
 
 import { allBookings } from '~/data/queries/booking'
 import { useAuth } from '~/features/auth/client/authClient'
 import { useQuery } from '~/zero/client'
 
 // hidden panel toggled by ctrl+shift+alt+p, surfaces permission/query state for e2e tests
+// only works on web since native doesn't have window
 export const ZeroTestUI = memo(() => {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
+    if (!isWeb) return
+
     const handler = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.shiftKey && e.altKey && e.key.toLowerCase() === 'p') {
         e.preventDefault()
