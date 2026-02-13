@@ -1,7 +1,7 @@
 import { and, eq, ne } from 'drizzle-orm'
 
 import { getDb } from '~/database'
-import { device, notification, post, userPublic } from '~/database/schema-public'
+import { device, notification } from '~/database/schema-public'
 
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send'
 
@@ -154,48 +154,9 @@ export const markAllNotificationsRead = async (userId: string) => {
     .where(and(eq(notification.userId, userId), eq(notification.read, false)))
 }
 
-export const notifyCommentOnPost = async (params: {
-  postId: string
-  commentId: string
-  commenterId: string
-  commentContent: string
-}) => {
-  const { postId, commentId, commenterId, commentContent } = params
-  const db = getDb()
-
-  const [postRow] = await db
-    .select({ userId: post.userId })
-    .from(post)
-    .where(eq(post.id, postId))
-
-  if (!postRow) return
-
-  const postOwnerId = postRow.userId
-
-  if (postOwnerId === commenterId) return
-
-  const [commenter] = await db
-    .select({ name: userPublic.name, username: userPublic.username })
-    .from(userPublic)
-    .where(eq(userPublic.id, commenterId))
-
-  const commenterName = commenter?.name || commenter?.username || 'Someone'
-  const truncatedContent =
-    commentContent.length > 100 ? `${commentContent.slice(0, 100)}...` : commentContent
-
-  await createNotification({
-    userId: postOwnerId,
-    actorId: commenterId,
-    type: 'comment',
-    title: commenterName,
-    body: `${commenterName} commented: ${truncatedContent}`,
-    data: { postId, commentId },
-  })
-}
 
 export const pushNotificationActions = () => ({
   createNotification,
-  notifyCommentOnPost,
   sendPushToUser,
   sendExpoPush,
   markNotificationRead,
