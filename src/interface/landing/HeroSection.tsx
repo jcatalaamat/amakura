@@ -72,10 +72,11 @@ export function HeroSection() {
 
         <HeroTitle>Donde la tierra enseña y el hogar crece</HeroTitle>
 
+        <TagLine>Escuela de Agricultura Regenerativa, Bioconstrucción, Artes y Oficios</TagLine>
+
         <HeroSubtitle>
-          Un centro de vida regenerativa dedicado a la bioconstrucción, permacultura y
-          reconexión con la naturaleza. Visítanos, aprende con nosotros, o construye tu
-          sueño.
+          Rescatando nuestras raíces | Tejiendo experiencias | Compartiendo saberes.
+          Visítanos, aprende con nosotros, o construye tu sueño.
         </HeroSubtitle>
 
         <XStack gap="$4" mt="$4" flexWrap="wrap" justify="center">
