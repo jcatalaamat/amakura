@@ -16,8 +16,8 @@ export const PRIVACY_POLICY_URL = `https://${DOMAIN}${PRIVACY_POLICY_PATH}`
 export const EULA_URL = `https://${DOMAIN}${EULA_PATH}`
 
 // Social
-export const INSTAGRAM_URL = 'https://instagram.com/amakura'
-export const WHATSAPP_URL = 'https://wa.me/529581234567'
+export const INSTAGRAM_URL = 'https://instagram.com/amakura.mx'
+export const WHATSAPP_URL = 'https://wa.me/529581004640'
 
 // Email
 export const ADMIN_EMAIL = `hola@${DOMAIN}`
