@@ -172,7 +172,7 @@ export function ContactSection() {
                 WhatsApp
               </Paragraph>
               <Paragraph size="$4" color="$color11">
-                +52 958 123 4567
+                +52 958 100 4640
               </Paragraph>
             </YStack>
             <YStack items="center" gap="$1">
@@ -180,7 +180,7 @@ export function ContactSection() {
                 Email
               </Paragraph>
               <Paragraph size="$4" color="$color11">
-                hola@amakura.mx
+                hola@amakura.store
               </Paragraph>
             </YStack>
             <YStack items="center" gap="$1">
