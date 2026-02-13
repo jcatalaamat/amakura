@@ -31,8 +31,10 @@ jobs:
           VITE_POSTHOG_HOST: ${{ secrets.VITE_POSTHOG_HOST }}
           VITE_WEB_HOST: ${{ secrets.VITE_WEB_HOST }}
 
+      - name: Link Vercel project
+        run: |
+          mkdir -p dist/client/.vercel
+          echo '{"projectId":"${{ secrets.VERCEL_PROJECT_ID }}","orgId":"${{ secrets.VERCEL_ORG_ID }}"}' > dist/client/.vercel/project.json
+
       - name: Deploy to Vercel
         run: npx vercel deploy dist/client --prod --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
